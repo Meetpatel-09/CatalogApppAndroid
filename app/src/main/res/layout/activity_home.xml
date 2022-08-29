@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.catalog.HomeActivity"
+    android:orientation="vertical"
+    android:background="#f5f5f5">
+
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/app_name"
+      android:textStyle="bold"
+      android:textColor="@color/colorPrimary"
+      android:textSize="40sp"
+      android:layout_marginTop="25dp"
+      android:layout_marginStart="10dp"
+      android:fontFamily="@font/lato_regular"
+      />
+
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Trending Products"
+      android:textColor="@color/black"
+      android:textSize="20sp"
+      android:layout_marginTop="7dp"
+      android:layout_marginBottom="15dp"
+      android:layout_marginStart="11dp"
+      android:fontFamily="@font/lato_light" />
+
+  <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+      android:id="@+id/pull_to_refresh_catalog"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_home_page_catalog"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"/>
+  </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+</LinearLayout>
