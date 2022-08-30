@@ -97,7 +97,7 @@ public class UserLogInActivity extends AppCompatActivity {
         auth.signInWithEmailAndPassword(sEmail, sPwd).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 pd.dismiss();
-                startActivity(new Intent(UserLogInActivity.this, MainActivity.class));
+                startActivity(new Intent(UserLogInActivity.this, HomeActivity.class));
                 finish();
             } else {
                 Toast.makeText(UserLogInActivity.this, "Error : " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();

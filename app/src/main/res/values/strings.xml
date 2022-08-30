@@ -110,6 +110,8 @@
     <string name="receiver_message_displays_here">Receiver Message displays here</string>
     <string name="remove_book">Remove Book</string>
     <string name="desc">desc</string>
+    <string name="buy">Buy</string>
+    <string name="no_item_in_cart">No Item In Cart</string>
 
 
 </resources>

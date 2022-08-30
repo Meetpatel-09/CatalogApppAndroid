@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.catalogapp.R;
 import com.example.catalogapp.model.CatalogModel;
+import com.example.catalogapp.user.catalog.CatalogDetailActivity;
 import com.example.catalogapp.user.ui.BookInfoActivity;
 import com.squareup.picasso.Picasso;
 
@@ -42,7 +43,7 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.CatalogV
         CatalogModel model = list.get(position);
 
         String price = "$ " + model.getPrice();
-
+        String id = String.valueOf(model.getId());
 
         holder.catalogName.setText(model.getName());
         holder.catalogDesc.setText(model.getDesc());
@@ -56,21 +57,13 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.CatalogV
         }
 
         holder.container.setOnClickListener(view -> {
-            Intent i = new Intent(context , BookInfoActivity.class);
+            Intent i = new Intent(context , CatalogDetailActivity.class);
 
-//            i.putExtra("book_id" ,model.getId());
-//            i.putExtra("book_author" ,model.getAuthor());
-//            i.putExtra("book_title",model.getTitle());
-//            i.putExtra("book_thumbnail",model.getBookImage());
-////                i.putExtra("book_desc",model.getDescription());
-//            i.putExtra("book_cat",model.getCategory());
-//
-//            i.putExtra("sellerId", model.getUserId());
-//            i.putExtra("selling_price",model.getPrice());
-//            i.putExtra("pages",model.getPages());
-//            i.putExtra("ISBN",model.getISBN());
-//            i.putExtra("language",model.getLanguage());
-//            i.putExtra("publicationYear",model.getPublicationYear());
+            i.putExtra("product_id" ,id);
+            i.putExtra("product_name" ,model.getName());
+            i.putExtra("product_desc",model.getDesc());
+            i.putExtra("product_price",price);
+            i.putExtra("product_thumbnail",model.getImage());
 
             context.startActivity(i);
         });

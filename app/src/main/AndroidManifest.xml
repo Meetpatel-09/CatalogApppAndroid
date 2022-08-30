@@ -23,10 +23,13 @@
         android:theme="@style/Theme.SecondHandBooks"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".CatalogDetailActivity"
+            android:name=".user.catalog.CartActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".user.catalog.CatalogDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.catalog.HomeActivity"
             android:exported="false" />
         <activity
             android:name="com.example.catalogapp.admin.books.ManageBookActivity"
@@ -72,7 +75,7 @@
         </activity>
         <activity
             android:name="com.example.catalogapp.StartActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name="com.example.catalogapp.authentication.AdminLogInActivity"
             android:exported="false" />

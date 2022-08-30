@@ -7,12 +7,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.catalogapp.R;
+import com.example.catalogapp.StartActivity;
 import com.example.catalogapp.adapter.CatalogAdapter;
+import com.example.catalogapp.authentication.UserLogInActivity;
 import com.example.catalogapp.model.CatalogModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,6 +32,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private CatalogAdapter adapter;
     private ArrayList<CatalogModel> list;
+    private FloatingActionButton floatingActionButton;
 
     private DatabaseReference reference;
 
@@ -47,11 +55,27 @@ public class HomeActivity extends AppCompatActivity {
         recycler_home_page_catalog.setHasFixedSize(true);
         recycler_home_page_catalog.setLayoutManager(new LinearLayoutManager(this));
 
+        floatingActionButton = findViewById(R.id.goto_cart_button);
+
         showNewAvailable();
 
         pullToRefresh.setOnRefreshListener(() -> {
             showNewAvailable();
             pullToRefresh.setRefreshing(false);
+        });
+
+        floatingActionButton.setOnClickListener(view -> {
+//            Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, CartActivity.class));
+        });
+
+        ImageView logOut = findViewById(R.id.log_out2);
+
+        logOut.setOnClickListener(v -> {
+
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(this, UserLogInActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+
         });
     }
 
@@ -66,6 +90,8 @@ public class HomeActivity extends AppCompatActivity {
                     CatalogModel model = dataSnapshot.getValue(CatalogModel.class);
                     list.add(0, model);
                 }
+
+
 
                 adapter = new CatalogAdapter(HomeActivity.this, list);
                 adapter.notifyDataSetChanged();

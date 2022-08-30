@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.catalogapp.R;
 import com.example.catalogapp.user.MainActivity;
+import com.example.catalogapp.user.catalog.HomeActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -74,7 +75,7 @@ public class UserRegisterActivity extends AppCompatActivity {
     }
 
     private void openCProfile() {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, HomeActivity.class));
         finish();
     }
 
